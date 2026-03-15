@@ -8,6 +8,7 @@
         body {
             margin: 0;
             padding: 0;
+            width: 100%;
         }
 
         header {
@@ -17,11 +18,16 @@
             padding: 10px;
             text-transform: capitalize;
             font-size: 23px;
-            margin-bottom: 20px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+
         }
 
         .container {
             text-align: center;
+            margin-top: 60px;
         }
 
         #companies {
@@ -44,7 +50,6 @@
         table {
             background-color: rgb(155, 159, 157);
             text-align: center;
-
             margin: 20px 50px;
             border-radius: 7px;
         }
@@ -54,6 +59,50 @@
             color: rgb(235, 232, 232);
             text-transform: capitalize;
             padding: 12px 10px;
+
+        }
+
+        @media(max-width:450px) {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            table {
+                background-color: rgb(155, 159, 157);
+                width: 80%;
+                margin: 10px auto;
+                text-align: center;
+                margin: 20px 50px;
+                border-radius: 7px;
+            }
+
+            th {
+                background-color: rgb(81, 73, 73);
+                color: rgb(235, 232, 232);
+                text-transform: capitalize;
+                padding: 12px 10px;
+
+
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            #companies {
+                width: 60%;
+                margin: 1px auto;
+                margin-top: -10px;
+
+            }
+
+            #download {
+                width: 30%;
+                margin: 1px auto;
+                margin-top: -6px;
+            }
 
         }
 
@@ -239,10 +288,10 @@
                 const imgData = canvas.toDataURL("image/png");
                 const { jsPDF } = window.jspdf;
                 let pdf = new jsPDF();
-                let imgWidth = 210;   // width of A4 page in mm
-                let pageHeight = 295; // height of A4 page in mm
+                let imgWidth = 190;   // width of A4 page in mm
+                let pageHeight = 275; // height of A4 page in mm
                 let imgHeight = canvas.height * imgWidth / canvas.width;
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
                 pdf.save("price_action.pdf");
 
             });
